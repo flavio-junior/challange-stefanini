@@ -18,7 +18,7 @@ class ImageViewModel(
         MutableLiveData()
     val responseImagesCats: LiveData<NetWorkResult<DataRequestDTO>> = _responseImagesCats
 
-    fun getWeather(latitude: Double, longitude: Double) = viewModelScope.launch {
+    fun getImagesCats() = viewModelScope.launch {
         imageRepository.getImagesCats(context).collect {
             _responseImagesCats.value = it
         }

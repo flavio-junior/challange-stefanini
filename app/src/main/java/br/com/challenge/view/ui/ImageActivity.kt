@@ -18,7 +18,12 @@ class ImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getImagesCats()
         observeRequest()
+    }
+
+    private fun getImagesCats() {
+        viewModel.getImagesCats()
     }
 
     private fun observeRequest() {

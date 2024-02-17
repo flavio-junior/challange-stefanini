@@ -31,6 +31,6 @@ class ImageAdapter(
 class ImageItemHolder(private val item: ItemImageBinding) : RecyclerView.ViewHolder(item.root) {
 
     fun bind(image: ImageRequestDTO) {
-        Picasso.get().load(image.link).into(item.image)
+        Picasso.get().load(image.images.first().link).into(item.image)
     }
 }
