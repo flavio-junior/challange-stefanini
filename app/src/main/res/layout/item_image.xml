@@ -21,7 +21,6 @@
         android:id="@+id/image"
         android:scaleType="centerCrop"
         android:layout_width="@dimen/size_96"
-        android:src="@drawable/ic_launcher_background"
         android:layout_height="@dimen/size_96"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

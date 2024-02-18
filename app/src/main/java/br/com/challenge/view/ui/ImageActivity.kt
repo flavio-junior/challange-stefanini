@@ -52,7 +52,7 @@ class ImageActivity : AppCompatActivity() {
     }
 
     private fun setupView(dataRequestDTO: DataRequestDTO) {
-        binding.recyclerview.adapter = ImageAdapter(dataRequestDTO.data)
+        binding.recyclerview.adapter = ImageAdapter(this, dataRequestDTO.data)
     }
 
     private fun stateProgress(enabled: Boolean) {

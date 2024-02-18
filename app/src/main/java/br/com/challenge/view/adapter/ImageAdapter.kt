@@ -1,15 +1,17 @@
 package br.com.challenge.view.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.challenge.data.dto.ImageRequestDTO
 import br.com.challenge.databinding.ItemImageBinding
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 class ImageAdapter(
+    private val context: Context,
     private val imageRequestDTOS: List<ImageRequestDTO> = mutableListOf()
-) : RecyclerView.Adapter<ImageItemHolder>() {
+) : RecyclerView.Adapter<ImageAdapter.ImageItemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageItemHolder {
         val item = ItemImageBinding.inflate(
@@ -22,15 +24,19 @@ class ImageAdapter(
 
     override fun onBindViewHolder(holder: ImageItemHolder, position: Int) {
         val imageRequest: ImageRequestDTO = imageRequestDTOS[position]
-        holder.bind(imageRequest)
+        holder.bind(context, imageRequest)
     }
 
     override fun getItemCount(): Int = imageRequestDTOS.size
-}
 
-class ImageItemHolder(private val item: ItemImageBinding) : RecyclerView.ViewHolder(item.root) {
+    class ImageItemHolder(private val item: ItemImageBinding) : RecyclerView.ViewHolder(item.root) {
 
-    fun bind(image: ImageRequestDTO) {
-        Picasso.get().load(image.images.first().link).into(item.image)
+        fun bind(context: Context, image: ImageRequestDTO) {
+            image.images.forEach {
+                when (it.type) {
+                    "image/jpeg" -> Glide.with(context).load(it.link).fitCenter().into(item.image)
+                }
+            }
+        }
     }
 }

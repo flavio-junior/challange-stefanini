@@ -10,6 +10,8 @@ data class ImageRequestDTO(
 )
 
 data class ImagesRequestDTO(
+    @SerializedName("type")
+    val type: String,
     @SerializedName("link")
     val link: String
 )
