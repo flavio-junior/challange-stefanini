@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".view.ui.ImageActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -22,11 +23,14 @@
         android:layout_width="@dimen/size_0"
         android:layout_height="@dimen/size_0"
         android:orientation="vertical"
+        android:paddingStart="@dimen/size_16"
+        android:paddingEnd="@dimen/size_0"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="4"
+        tools:itemCount="16"
         tools:listitem="@layout/item_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

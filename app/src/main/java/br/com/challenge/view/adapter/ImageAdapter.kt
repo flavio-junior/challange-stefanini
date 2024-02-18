@@ -3,6 +3,7 @@ package br.com.challenge.view.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import br.com.challenge.data.dto.ImageRequestDTO
 import br.com.challenge.databinding.ItemImageBinding
@@ -34,7 +35,13 @@ class ImageAdapter(
         fun bind(context: Context, image: ImageRequestDTO) {
             image.images.forEach {
                 when (it.type) {
-                    "image/jpeg" -> Glide.with(context).load(it.link).fitCenter().into(item.image)
+                    "image/jpeg" ->
+                        Glide
+                            .with(context)
+                            .load(it.link)
+                            .centerCrop()
+                            .error({ item.box.isVisible = false })
+                            .into(item.image)
                 }
             }
         }
