@@ -4,24 +4,23 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import br.com.challenge.data.dto.DataRequestDTO
-import br.com.challenge.data.repository.ImageRepository
+import br.com.challenge.data.dto.ImageCatsRequestDTO
+import br.com.challenge.data.repository.ImageCatsRepository
 import br.com.challenge.utils.NetWorkResult
 import kotlinx.coroutines.launch
 
-class ImageViewModel(
-    private val imageRepository: ImageRepository,
+class ImageCatsViewModel(
+    private val imageCatsRepository: ImageCatsRepository,
     application: Application
 ) : BaseViewModel(application) {
 
-    private val _responseImagesCats: MutableLiveData<NetWorkResult<DataRequestDTO>> =
+    private val _responseImagesCats: MutableLiveData<NetWorkResult<ImageCatsRequestDTO>> =
         MutableLiveData()
-    val responseImagesCats: LiveData<NetWorkResult<DataRequestDTO>> = _responseImagesCats
+    val responseImagesCats: LiveData<NetWorkResult<ImageCatsRequestDTO>> = _responseImagesCats
 
     fun getImagesCats() = viewModelScope.launch {
-        imageRepository.getImagesCats(context).collect {
+        imageCatsRepository.getImagesCats(context).collect {
             _responseImagesCats.value = it
         }
     }
-
 }

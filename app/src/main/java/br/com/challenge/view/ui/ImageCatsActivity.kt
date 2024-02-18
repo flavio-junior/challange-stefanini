@@ -2,21 +2,21 @@ package br.com.challenge.view.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import br.com.challenge.data.dto.DataRequestDTO
-import br.com.challenge.databinding.ActImageBinding
+import br.com.challenge.data.dto.ImageCatsRequestDTO
+import br.com.challenge.databinding.ActImagesCatsBinding
 import br.com.challenge.utils.ApiResultHandler
-import br.com.challenge.view.adapter.ImageAdapter
-import br.com.challenge.view.viewModel.ImageViewModel
+import br.com.challenge.view.adapter.ImageCatsAdapter
+import br.com.challenge.view.viewModel.ImageCatsViewModel
 import org.koin.android.ext.android.inject
 
-class ImageActivity : AppCompatActivity() {
+class ImageCatsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActImageBinding
-    private val viewModel: ImageViewModel by inject()
+    private lateinit var binding: ActImagesCatsBinding
+    private val viewModel: ImageCatsViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActImageBinding.inflate(layoutInflater)
+        binding = ActImagesCatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getImagesCats()
         observeRequest()
@@ -28,9 +28,9 @@ class ImageActivity : AppCompatActivity() {
 
     private fun observeRequest() {
         try {
-            viewModel.responseImagesCats.observe(this@ImageActivity) { response ->
-                val apiResultHandler = ApiResultHandler<DataRequestDTO>(
-                    this@ImageActivity,
+            viewModel.responseImagesCats.observe(this@ImageCatsActivity) { response ->
+                val apiResultHandler = ApiResultHandler<ImageCatsRequestDTO>(
+                    this@ImageCatsActivity,
                     onLoading = {
                         stateProgress(true)
                     },
@@ -51,8 +51,8 @@ class ImageActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupView(dataRequestDTO: DataRequestDTO) {
-        binding.recyclerview.adapter = ImageAdapter(this, dataRequestDTO.data)
+    private fun setupView(imageCatsRequestDTO: ImageCatsRequestDTO) {
+        binding.recyclerview.adapter = ImageCatsAdapter(this, imageCatsRequestDTO.data)
     }
 
     private fun stateProgress(enabled: Boolean) {

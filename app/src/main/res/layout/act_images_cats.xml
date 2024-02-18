@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.ui.ImageActivity">
+    tools:context=".view.ui.ImageCatsActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading_request"
@@ -32,5 +32,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="4"
         tools:itemCount="16"
-        tools:listitem="@layout/item_image" />
+        tools:listitem="@layout/item_image_cat" />
 </androidx.constraintlayout.widget.ConstraintLayout>

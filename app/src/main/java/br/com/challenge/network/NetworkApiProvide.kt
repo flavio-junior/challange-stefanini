@@ -1,5 +1,5 @@
 package br.com.challenge.network
-import br.com.challenge.data.repository.ChallengeAPI
+import br.com.challenge.data.repository.ImageCatsAPI
 import br.com.challenge.utils.Constants
 import br.com.challenge.utils.Constants.TIME_SECONDS
 import okhttp3.OkHttpClient
@@ -28,4 +28,4 @@ fun provideRetrofit(
         .build()
 }
 
-fun provideService(retrofit: Retrofit): ChallengeAPI = retrofit.create(ChallengeAPI::class.java)
+fun provideService(retrofit: Retrofit): ImageCatsAPI = retrofit.create(ImageCatsAPI::class.java)
